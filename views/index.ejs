@@ -1,0 +1,33 @@
+<%- include('./partials/header', {heading: 'Blog Articles'}) %>
+<div class="m-6 text-center">
+    <a
+        class="p-2 rounded text-xl font-bold border-black border-2"
+        href="/article/new"
+        >New Article</a
+    >
+</div>
+<div
+    class="m-8 border-2 border-black rounded overflow-auto max-h-96 grid gap-4 p-5"
+>
+    <% articles.forEach(article => { %>
+    <div class="flex gap-2 p-2 rounded shadow-md shadow-black">
+        <div class="m-3 p-2 outline outline-2 outline-black rounded">
+            <h2 class="my-8 text-3xl"><%= article.title %></h2>
+        </div>
+        <div class="grow m-3 p-2">
+            <p><%= article.createdAt.toLocaleDateString() %></p>
+            <p><%= article.description %></p>
+            <div>
+                <a href="/article/<%= article.id %>/view">Read more</a>
+                <a href="/article/<%= article.id %>/edit">Edit</a>
+                <form
+                    action="/article/<%= article.id %>?_method=delete"
+                    method="post"
+                >
+                    <button type="submit">delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</div>

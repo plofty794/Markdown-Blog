@@ -1,0 +1,32 @@
+<%- include('../partials/header', {heading: 'Add Article'}) %>
+
+<h1>Articles</h1>
+<form action="/article/new" method="post">
+    <%- include('../partials/errorMessage') %>
+    <div>
+        <label for="title">Article Title</label>
+        <input type="text" name="title" id="title" required />
+    </div>
+    <div>
+        <label for="description">Article Description</label>
+        <textarea
+            name="description"
+            id="description"
+            minlength="20"
+            required
+        ></textarea>
+    </div>
+    <div>
+        <label for="content">Article Content</label>
+        <textarea
+            name="content"
+            id="content"
+            minlength="40"
+            required
+        ></textarea>
+    </div>
+    <button type="submit">Add article</button>
+</form>
+<div>
+    <a href="/">Back</a>
+</div>

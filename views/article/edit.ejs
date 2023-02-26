@@ -1,0 +1,43 @@
+<%- include('../partials/header', {heading: `Edit ${article.title}`}) %>
+<div class="p-4">
+    <form
+        class="flex flex-col gap-4 items-center"
+        action="/article/<%= article.id %>/edit?_method=patch"
+        method="post"
+    >
+        <%- include('../partials/errorMessage') %>
+        <div class="w-max p-4">
+            <label for="title">Edit title</label>
+            <input
+                type="text"
+                id="title"
+                name="title"
+                value="<%= article.title %>"
+            />
+        </div>
+        <div class="w-max p-4">
+            <label for="description">Edit description</label>
+            <textarea name="description" id="description">
+    <%= article.description %></textarea
+            >
+        </div>
+        <div class="w-max p-4">
+            <label for="content">Edit content</label>
+            <textarea name="content" id="content">
+<%= article.content %></textarea
+            >
+        </div>
+        <div class="w-max p-4">
+            <button
+                class="font-bold px-4 py-1 rounded border-2 border-black"
+                type="submit"
+            >
+                Done
+            </button>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a href="/">Back</a>
+</div>

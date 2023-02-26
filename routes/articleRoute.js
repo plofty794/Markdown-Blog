@@ -47,7 +47,7 @@ router.patch("/:id/edit", async (req, res) => {
         article.title = req.body.title;
         article.content = req.body.content;
         await article.save();
-        res.render("article/edit", { article: article });
+        res.redirect(`/article/${article.id}/view`);
     } catch (error) {
         res.render("article/edit", {
             article: article,
